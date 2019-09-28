@@ -1,0 +1,4 @@
+Lenguaje: Python
+Temas:
+1.	Validación de una dirección IP, ya que esta está formada por la forma [0-255].[0-255]. [0-255].[0-255]
+2.	Validar una fecha con formato dd/mm/aaaa
