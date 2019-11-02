@@ -7,8 +7,12 @@ def validate(args):
   return re.match(fr'{octet}\.{octet}\.{octet}\.{octet}$', line)
 
 def main():
-  date_input = input('Ingresar dirección ip: ')
-  print("{}".format('Dirección ip valida' if validate(date_input) else 'Dirección ip invalida'))
+  exit = False
+  while exit == False:
+    input_line = input('Ingresar dirección ip: ')
+    print('{}'.format('Dirección ip valida' if validate(input_line) else 'Dirección ip invalida'))
+    if input('¿Salir? [Y/n]: ') == 'Y':
+      exit = True
 
 def test():
   assert validate(['4.20.109.3']) is not None, 'Should not be None'

@@ -50,11 +50,12 @@ def validate(args):
   return False
 
 def main():
-  date_input = input('Ingresar fecha: ')
-  if date_input!="exit":
+  exit = False
+  while exit == False:
+    date_input = input('Ingresar fecha: ')
     print("{}".format('Fecha valida' if validate(date_input) else 'Fecha invalida'))
-  if date_input!="exit":
-    main()
+    if input('¿Salir? [Y/n]: ') == 'Y':
+      exit = True
 
 def test():
   assert validate(['30/09/1998']) == True, 'Should be True'
