@@ -1,4 +1,3 @@
-#!/usr/local/bin/python3
 import re
 
 def validate(args):
@@ -29,7 +28,13 @@ def validate(args):
     if re.match(r'^(02)$', months) != None:
       # Leap years validation
       if re.match(r'^((\d{2}[02468][048])|(\d{2}[13579][26]))$', year) != None:
-        days_regex = '^(0[1-9]|[12][0-9])$'
+        if re.match(r'^(\d{2}[0][0])$', year)!= None:
+          if re.match(r'^(([2468][048][0][0])|([13579][26][0][0]))$', year) != None:
+            days_regex = '^(0[1-9]|[12][0-9])$'
+          else:
+            days_regex = '^(0[1-9]|[12][0-8])$'
+        else:
+          days_regex = '^(0[1-9]|[12][0-9])$'
       else:
         days_regex = '^(0[1-9]|[12][0-8])$'
     else:
@@ -46,7 +51,10 @@ def validate(args):
 
 def main():
   date_input = input('Ingresar fecha: ')
-  print("{}".format('Fecha valida' if validate(date_input) else 'Fecha invalida'))
+  if date_input!="exit":
+    print("{}".format('Fecha valida' if validate(date_input) else 'Fecha invalida'))
+  if date_input!="exit":
+    main()
 
 def test():
   assert validate(['30/09/1998']) == True, 'Should be True'
