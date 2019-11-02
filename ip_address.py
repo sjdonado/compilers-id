@@ -4,7 +4,7 @@ import re
 def validate(args):
   line = "".join(args)
   octet = r'(([0-9])|([1-9][0-9])|(1([0-9]{2}))|(2([0-4][0-9]|5[0-5])))'
-  return re.match(fr'{octet}\.{octet}\.{octet}\.{octet}$', line)
+  return re.match(fr'^{octet}\.{octet}\.{octet}\.{octet}$', line)
 
 def main():
   exit = False
